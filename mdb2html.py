@@ -33,40 +33,57 @@ html_table_rest = df_rest.to_html(classes='rest', index=False)
 
 
 # Create the HTML page
-html_page = f"""
+html = f'''
 <!DOCTYPE html>
 <html>
 <head>
-     <link rel="stylesheet" href="{config['general']['stylesheet']}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#searchInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-            $("#toggleButton").click(function(){
-                $("#restTable").toggle();
-            });
-        });
-    </script>
+  <meta charset="UTF-8">
+  <title>{config['page_title']}</title>
+  <link rel="stylesheet" type="text/css" href="{config['stylesheet']}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    /* Add your custom CSS styles here */
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>{config["page_title"]}</h1>
-        <input id="searchInput" type="text" placeholder="Search by callsign..">
-        <button id="toggleButton">Show/Hide Older Contacts</button>
-        {html_table_top10}
-        <div id="restTable" style="display: none;">
-            {html_table_rest}
-        </div>
-    </div>
+  <h1>{config['page_title']}</h1>
+  <input type="text" id="searchInput" placeholder="Search by Callsign">
+  <table>
+    <thead>
+      <tr>
+        <th>{column_names['fldPrimaryKey']}</th>
+        <th>{column_names['fldBand']}</th>
+        <th>{column_names['fldCall']}</th>
+        <th>{column_names['fldMode']}</th>
+        <th>{column_names['fldRstR']}</th>
+        <th>{column_names['fldRstS']}</th>
+        <th>{column_names['fldSPCNum']}</th>
+        <th>{column_names['fldDateStr']}</th>
+        <th>{column_names['fldTimeOnStr']}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Table rows will be dynamically generated here -->
+    </tbody>
+  </table>
+  <script>
+    $(document).ready(function() {
+      $("#searchInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("tbody tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
 </body>
 </html>
+'''
 
-"""
+# Save the HTML snippet to a file
+output_file = os.path.join(config['output_dir'], config['output_filename'])
+with open(output_file, 'w') as f:
+    f.write(html)
 
 # Write the HTML page to a file
 with open('log.html', 'w') as f:
