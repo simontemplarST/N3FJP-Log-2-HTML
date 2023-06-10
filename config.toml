@@ -1,9 +1,16 @@
 [general]
-page_title = "N0YEP's LOG"
-db_file = "path/to/log"
-output_file = "path/to/html/output.html"
+page_title = "N0YEP's Log"
+database_location = "path_to_log_file.mdb"
+output_dir = "path_for_output_file"
+output_filename = "log.html"
 stylesheet = "/CSS/default.css"
 
-[table]
-fields = ["fldPrimaryKey", "fldBand", "fldCall", "fldMode", "fldRstR", "fldRstS", "fldSPCNum", "fldDateStr", "fldTimeOnStr"]
-field_names = ["ID", "Band", "Call", "Mode", "R", "S", "Country", "Date", "Time"]
+[table_columns]
+fldBand = "Band"
+fldCall = "Call"
+fldMode = "Mode"
+fldRstR = "S"
+fldRstS = "R"
+fldSPCNum = "Country"
+fldDateStr = "Date"
+fldTimeOnStr = "Time"
