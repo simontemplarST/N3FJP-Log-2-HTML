@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>N0YEP's Log</title>
+  <link rel="stylesheet" type="text/css" href="/CSS/default.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    /* Add your custom CSS styles here */
+  </style>
+</head>
+<body>
+  <h1>N0YEP's Log</h1>
+  <input type="text" id="searchInput" placeholder="Search by Callsign">
+  <table>
+    <thead>
+      <tr>
+        <th>Band</th>
+        <th>Call</th>
+        <th>Mode</th>
+        <th>S</th>
+        <th>R</th>
+        <th>Country</th>
+        <th>Date</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Table rows will be dynamically generated here -->
+    </tbody>
+  </table>
+  <script>
+    $(document).ready(function() {
+      $('#searchInput').on('keyup', function() {
+        var value = $(this).val().toLowerCase();
+        $('tbody tr').filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        });
+      });
+    });
+  </script>
+</body>
+</</html>

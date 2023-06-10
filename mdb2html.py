@@ -16,25 +16,25 @@ output_dir = config.get('general', 'output_dir')
 output_filename = config.get('general', 'output_filename')
 stylesheet = config.get('general', 'stylesheet')
 
-fldBand = config.get('table_columns', 'fldBand')
-fldCall = config.get('table_columns', 'fldCall')
-fldMode = config.get('table_columns', 'fldMode')
-fldRstR = config.get('table_columns', 'fldRstR')
-fldRstS = config.get('table_columns', 'fldRstS')
-fldSPCNum = config.get('table_columns', 'fldSPCNum')
-fldDateStr = config.get('table_columns', 'fldDateStr')
-fldTimeOnStr = config.get('table_columns', 'fldTimeOnStr')
+fldBand = config.get('columns', 'fldBand')
+fldCall = config.get('columns', 'fldCall')
+fldMode = config.get('columns', 'fldMode')
+fldRstR = config.get('columns', 'fldRstR')
+fldRstS = config.get('columns', 'fldRstS')
+fldSPCNum = config.get('columns', 'fldSPCNum')
+fldDateStr = config.get('columns', 'fldDateStr')
+fldTimeOnStr = config.get('columns', 'fldTimeOnStr')
 
 # Convert the database path and output directory to the appropriate format
 database_path = os.path.normpath(database_path)
 output_dir = os.path.normpath(output_dir)
 
 
-# Connect to the Access database
+# Connect to the Access database using DSN
 conn_str = (
-    r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
-    fr'DBQ={config.get("general", "database_path")};'
+    r'DSN=log;'
 )
+
 
 cnxn = pyodbc.connect(conn_str)
 
@@ -45,7 +45,7 @@ sql = f"SELECT {columns} FROM tblContacts ORDER BY fldDateStr DESC, fldTimeOnStr
 df = pd.read_sql_query(sql, cnxn)
 
 # Rename the columns according to config
-df.rename(columns=config["column_names"], inplace=True)
+df.rename(columns=config["columns"], inplace=True)
 
 # Split the dataframe into two parts: top 10 rows and the rest
 df_top10 = df.head(10)
@@ -56,8 +56,6 @@ html_table_top10 = df_top10.to_html(classes='top10', index=False)
 html_table_rest = df_rest.to_html(classes='rest', index=False)
 
 
-# Create the HTML page
-# Generate the HTML page snippet including the search script
 # Generate the HTML page snippet including the search script
 html = (
     "<!DOCTYPE html>\n"
@@ -77,14 +75,14 @@ html = (
     "  <table>\n"
     "    <thead>\n"
     "      <tr>\n"
-    f"        <th>{fldBand}</th>\n"
-    f"        <th>{fldCall}</th>\n"
-    f"        <th>{fldMode}</th>\n"
-    f"        <th>{fldRstR}</th>\n"
-    f"        <th>{fldRstS}</th>\n"
-    f"        <th>{fldSPCNum}</th>\n"
-    f"        <th>{fldDateStr}</th>\n"
-    f"        <th>{fldTimeOnStr}</th>\n"
+    f"        <th>{config.get('columns', 'fldBand')}</th>\n"
+    f"        <th>{config.get('columns', 'fldCall')}</th>\n"
+    f"        <th>{config.get('columns', 'fldMode')}</th>\n"
+    f"        <th>{config.get('columns', 'fldRstR')}</th>\n"
+    f"        <th>{config.get('columns', 'fldRstS')}</th>\n"
+    f"        <th>{config.get('columns', 'fldSPCNum')}</th>\n"
+    f"        <th>{config.get('columns', 'fldDateStr')}</th>\n"
+    f"        <th>{config.get('columns', 'fldTimeOnStr')}</th>\n"
     "      </tr>\n"
     "    </thead>\n"
     "    <tbody>\n"
@@ -105,11 +103,7 @@ html = (
     "</</html>\n"
 )
 
-# Save the HTML snippet to a file
-output_file = os.path.join(config['output_dir'], config['output_filename'])
+# Save HTML to file
+output_file = os.path.join(config.get('general', 'output_dir'), config.get('general', 'output_filename'))
 with open(output_file, 'w') as f:
     f.write(html)
-
-# Write the HTML page to a file
-with open('log.html', 'w') as f:
-    f.write(html_page)
