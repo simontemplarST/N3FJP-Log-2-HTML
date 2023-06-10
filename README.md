@@ -38,7 +38,7 @@ For the sake of simplicity, you have the freedom to do this how you wish, or wha
 
 I have provided the workflow For my personal log [here](https://cameronheard.com/log):
 - Set the N3FJP database directory as "shared" under Windows
-- Mounted that share on a Linux LXD container
+- Mounted that share on an Linux LXD container
 - Wrote a bash script that runs: mdb2html.py and after that is ran, it waits 2 seconds for python to end the current PID, and then it runs `neocities upload log.html` from the directory I specified. 
     - I wrote some logic in there to say if the share is inaccessable to halt execution of the script from that point, as there is no data available. 
 - Set up a cron job to run this script every five minutes. 
