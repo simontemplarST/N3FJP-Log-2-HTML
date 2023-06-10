@@ -2,7 +2,7 @@ import pandas as pd
 import pyodbc
 import os
 import toml
-import warnings
+import warning
 warnings.filterwarnings('ignore', 'pandas only supports SQLAlchemy')
 
 # Load configuration from file
