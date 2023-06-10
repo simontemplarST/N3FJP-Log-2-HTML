@@ -1,0 +1,60 @@
+body {
+    font-family: 'Arial', sans-serif;
+    color: #D8DEE9; /* Snow Storm */
+    background-color: #2E3440; /* Polar Night */
+  }
+  
+  h1, h2, h3 {
+    color: #8FBCBB; /* Frost */
+  }
+  
+  a {
+    color: #88C0D0; /* Frost */
+    text-decoration: none;
+  }
+  
+  table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #D8DEE9;
+    border-collapse: collapse;
+  }
+  
+  table th,
+  table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #4C566A;
+  }
+  
+  table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #4C566A;
+  }
+  
+  table tbody + tbody {
+    border-top: 2px solid #4C566A;
+  }
+  
+  table .table {
+    background-color: #3B4252;
+  }
+  
+  .search-bar {
+    margin-bottom: 1rem;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .show-more {
+    cursor: pointer;
+    text-align: center;
+    color: #D8DEE9;
+  }
+  
+  .show-more:hover {
+    color: #8FBCBB;
+  }
+  

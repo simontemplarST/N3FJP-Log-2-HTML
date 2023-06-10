@@ -1,0 +1,9 @@
+[general]
+page_title = "N0YEP's LOG"
+db_file = "path/to/log"
+output_file = "path/to/html/output.html"
+stylesheet = "/CSS/default.css"
+
+[table]
+fields = ["fldPrimaryKey", "fldBand", "fldCall", "fldMode", "fldRstR", "fldRstS", "fldSPCNum", "fldDateStr", "fldTimeOnStr"]
+field_names = ["ID", "Band", "Call", "Mode", "R", "S", "Country", "Date", "Time"]
