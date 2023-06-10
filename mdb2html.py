@@ -33,33 +33,34 @@ html_table_rest = df_rest.to_html(classes='rest', index=False)
 
 
 # Create the HTML page
-html = f'''
+# Generate the HTML page snippet including the search script
+html = '''
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>{config['page_title']}</title>
-  <link rel="stylesheet" type="text/css" href="{config['stylesheet']}">
+  <title>{}</title>
+  <link rel="stylesheet" type="text/css" href="{}">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <style>
     /* Add your custom CSS styles here */
   </style>
 </head>
 <body>
-  <h1>{config['page_title']}</h1>
+  <h1>{}</h1>
   <input type="text" id="searchInput" placeholder="Search by Callsign">
   <table>
     <thead>
       <tr>
-        <th>{column_names['fldPrimaryKey']}</th>
-        <th>{column_names['fldBand']}</th>
-        <th>{column_names['fldCall']}</th>
-        <th>{column_names['fldMode']}</th>
-        <th>{column_names['fldRstR']}</th>
-        <th>{column_names['fldRstS']}</th>
-        <th>{column_names['fldSPCNum']}</th>
-        <th>{column_names['fldDateStr']}</th>
-        <th>{column_names['fldTimeOnStr']}</th>
+        <th>{}</th>
+        <th>{}</th>
+        <th>{}</th>
+        <th>{}</th>
+        <th>{}</th>
+        <th>{}</th>
+        <th>{}</th>
+        <th>{}</th>
+        <th>{}</th>
       </tr>
     </thead>
     <tbody>
@@ -71,7 +72,7 @@ html = f'''
       $("#searchInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $("tbody tr").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
         });
       });
     });
