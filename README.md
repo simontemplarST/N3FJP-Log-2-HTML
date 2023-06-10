@@ -9,7 +9,7 @@ This script converts a Microsoft Access database file into a styled HTML page di
 2. Install the necessary Python packages. You can do this by running the following command in your terminal:
 
 ```bash
-pip install pandas pyodbc configparser
+pip install pandas pyodbc 
 ```
 
 #### This script was tested with Python 3.8. Other versions might work but are not guaranteed.
@@ -19,12 +19,9 @@ You will also need the Microsoft Access Database Engine, which can be downloaded
 
 ## Usage
 
-Update the config.toml file with the path to your database, the desired page title, and the desired output path and filename. For example:
+Open the python script, go to line `10` and specify the path of the mdb database. 
 
-```database_path = "C:\\Users\\c\\Documents\\Affirmatech\\N3FJP Software\\ACLog\\LogData.mdb"
-page_title = "N0YEP's Log"
-output_path = "log.html"
-```
+Edit the HTML to your liking, starting on line `38`
 
 Run the script from your terminal:
 ```bash
@@ -37,8 +34,13 @@ Open the output file in your web browser to view the log.
 For the sake of simplicity, you have the freedom to do this how you wish, or what best suits your workflow. 
 
 I have provided the workflow For my personal [log](https://cameronheard.com/log):
-- Set the N3FJP database directory as "shared" under Windows
+- Set the output directory as shared under Windows
 - Mounted that share on an Linux LXD container
-- Wrote a bash script that runs: mdb2html.py and after that is ran, it waits 2 seconds for python to end the current PID, and then it runs `neocities upload log.html` from the directory I specified. 
-    - I wrote some logic in there to say if the share is inaccessable to halt execution of the script from that point, as there is no data available. 
+- pass `neocities upload log.html` to a bash script. 
 - Set up a cron job to run this script every five minutes. 
+
+
+---
+
+# In the works: 
+Config files for easier configuration of what columns are displayed, page title, database directory, output file location, style, etc. 
