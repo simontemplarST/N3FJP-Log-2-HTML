@@ -9,7 +9,7 @@ This script converts a Microsoft Access database file into a styled HTML page di
 2. Install the necessary Python packages. You can do this by running the following command in your terminal:
 
 ```bash
-pip install pandas pyodbc toml
+pip install pandas pyodbc configparser
 ```
 
 #### This script was tested with Python 3.8. Other versions might work but are not guaranteed.
