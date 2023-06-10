@@ -32,7 +32,8 @@ output_dir = os.path.normpath(output_dir)
 
 # Connect to the Access database using DSN
 conn_str = (
-    r'DSN=log;'
+    r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
+    r'DBQ=Y:\LogData.mdb;'
 )
 
 

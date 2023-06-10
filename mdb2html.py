@@ -4,42 +4,10 @@ import os
 import warnings
 warnings.filterwarnings('ignore', 'pandas only supports SQLAlchemy')
 
-<<<<<<< Updated upstream
 # Connect to the Access database
 conn_str = (
     r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
-    r'DBQ=C:\Users\c\Documents\Affirmatech\N3FJP Software\ACLog\LogData.mdb;'
-=======
-# Read the configuration from the config.ini file
-config = configparser.ConfigParser()
-config.read('config.ini')
-
-# Get the values from the configuration
-page_title = config.get('general', 'page_title')
-database_path = config.get('general', 'database_path')
-output_dir = config.get('general', 'output_dir')
-output_filename = config.get('general', 'output_filename')
-stylesheet = config.get('general', 'stylesheet')
-
-fldBand = config.get('columns', 'fldBand')
-fldCall = config.get('columns', 'fldCall')
-fldMode = config.get('columns', 'fldMode')
-fldRstR = config.get('columns', 'fldRstR')
-fldRstS = config.get('columns', 'fldRstS')
-fldSPCNum = config.get('columns', 'fldSPCNum')
-fldDateStr = config.get('columns', 'fldDateStr')
-fldTimeOnStr = config.get('columns', 'fldTimeOnStr')
-
-# Convert the database path and output directory to the appropriate format
-database_path = os.path.normpath(database_path)
-output_dir = os.path.normpath(output_dir)
-
-
-# Connect to the Access database
-conn_str = (
-    r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
-    fr'DBQ={config.get("general", "database_path")};'
->>>>>>> Stashed changes
+    r'DBQ=Y:\LogData.mdb;'
 )
 cnxn = pyodbc.connect(conn_str)
 sql = "SELECT fldBand, fldCall, fldMode, fldRstR, fldRstS, fldSPCNum, fldDateStr, fldTimeOnStr FROM tblContacts ORDER BY fldDateStr DESC, fldTimeOnStr DESC"
