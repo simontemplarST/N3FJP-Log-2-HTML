@@ -1,21 +1,10 @@
-import sys
-import subprocess
-import win32gui
-import win32process
+import tkinter as tk
+from tkinter import ttk
+from tkinter import filedialog
 import pandas as pd
 import pyodbc
 import os
 import threading
-import tkinter as tk
-from tkinter import ttk
-from tkinter import filedialog
-
-# Hide the command prompt window
-def hide_console_window():
-    window = win32console.GetConsoleWindow()
-    win32gui.ShowWindow(window, 0)
-    _, pid = win32process.GetWindowThreadProcessId(window)
-    subprocess.call(['taskkill', '/F', '/PID', str(pid)], creationflags=subprocess.CREATE_NO_WINDOW)
 
 # Connect to the Access database
 conn_str = (
@@ -114,10 +103,6 @@ def run_script():
 
 def select_output_file():
     file_path.set(filedialog.asksaveasfilename(defaultextension='.html', filetypes=[('HTML Files', '*.html')]))
-
-# Hide the command prompt window
-if sys.argv[-1] != '-noconsole':
-    hide_console_window()
 
 # Create the GUI
 root = tk.Tk()
