@@ -43,4 +43,10 @@ I have provided the workflow For my personal [log](https://cameronheard.com/log)
 ---
 
 # In the works: 
-Config files for easier configuration of what columns are displayed, page title, database directory, output file location, style, etc. 
+
+Config files:
+    - for easier configuration of what columns are displayed, page title, database directory, output file location, style, etc. 
+GUI: 
+- For those of you that don't like config files.
+Python Neocities uploader:
+- to package with this
