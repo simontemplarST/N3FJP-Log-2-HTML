@@ -5,6 +5,12 @@
         <title>N0YEP's Log</title>
             <link rel="stylesheet" type="text/css" href="CSS\default.css">
 
+        <style>
+            #restTableContainer {
+                display: block;
+                text-align: center;
+            }
+        </style>
         <script>
             function searchTable() {
                 var input, filter, table, tr, td, i, txtValue;
@@ -37,6 +43,18 @@
                     }
                 }
             }
+
+            function toggleRestTable() {
+                var restTable = document.getElementsByClassName("rest")[0];
+                var showRestButton = document.getElementById("showRestButton");
+                if (restTable.style.display === "none") {
+                    restTable.style.display = "table";
+                    showRestButton.textContent = "Show Less";
+                } else {
+                    restTable.style.display = "none";
+                    showRestButton.textContent = "Show More";
+                }
+            }
         </script>
     </head>
     <body>
@@ -56,6 +74,156 @@
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td>17</td>
+      <td>OK1AWC</td>
+      <td>FT8</td>
+      <td>-17</td>
+      <td>-13</td>
+      <td>Czech Republic</td>
+      <td>2023/06/11</td>
+      <td>14:30:45</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>N4RRW</td>
+      <td>FT8</td>
+      <td>-05</td>
+      <td>-11</td>
+      <td>TN</td>
+      <td>2023/06/11</td>
+      <td>14:18:30</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>KC5RR</td>
+      <td>FT8</td>
+      <td>-07</td>
+      <td>+03</td>
+      <td>TX</td>
+      <td>2023/06/11</td>
+      <td>13:58:30</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>VE6HQ</td>
+      <td>FT8</td>
+      <td>-12</td>
+      <td>-21</td>
+      <td>Canada</td>
+      <td>2023/06/11</td>
+      <td>13:55:15</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>KM4RL</td>
+      <td>FT8</td>
+      <td>-12</td>
+      <td>-14</td>
+      <td>FL</td>
+      <td>2023/06/11</td>
+      <td>13:52:45</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>M6JAY</td>
+      <td>FT8</td>
+      <td>-19</td>
+      <td>-12</td>
+      <td>England</td>
+      <td>2023/06/11</td>
+      <td>13:46:45</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>WA4MB</td>
+      <td>FT8</td>
+      <td>-15</td>
+      <td>+06</td>
+      <td>FL</td>
+      <td>2023/06/11</td>
+      <td>13:40:45</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>SP2EWQ</td>
+      <td>FT8</td>
+      <td>-08</td>
+      <td>-17</td>
+      <td>Poland</td>
+      <td>2023/06/11</td>
+      <td>13:38:15</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>KQ0Q</td>
+      <td>FT8</td>
+      <td>+06</td>
+      <td>-10</td>
+      <td>MO</td>
+      <td>2023/06/11</td>
+      <td>13:35:15</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>KJ4LTA</td>
+      <td>FT8</td>
+      <td>+05</td>
+      <td>+09</td>
+      <td>AL</td>
+      <td>2023/06/11</td>
+      <td>13:25:45</td>
+    </tr>
+  </tbody>
+</table>
+        <div id="restTableContainer">
+            
+    <center><button id="showRestButton" onclick="toggleRestTable()">Show Less</button></center>
+    
+            <table border="1" class="dataframe rest">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Band</th>
+      <th>Call</th>
+      <th>Mode</th>
+      <th>S</th>
+      <th>R</th>
+      <th>Country</th>
+      <th>Date</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>20</td>
+      <td>OH2MDN</td>
+      <td>FT8</td>
+      <td>-10</td>
+      <td>-09</td>
+      <td>Finland</td>
+      <td>2023/06/11</td>
+      <td>03:25:15</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>F5RRS</td>
+      <td>FT8</td>
+      <td>-12</td>
+      <td>-12</td>
+      <td>France</td>
+      <td>2023/06/11</td>
+      <td>03:23:45</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>KW4MQ</td>
+      <td>FT8</td>
+      <td>+01</td>
+      <td>-08</td>
+      <td>NC</td>
+      <td>2023/06/11</td>
+      <td>03:21:15</td>
+    </tr>
     <tr>
       <td>20</td>
       <td>N4WXB</td>
@@ -156,22 +324,6 @@
       <td>2023/06/08</td>
       <td>23:07:15</td>
     </tr>
-  </tbody>
-</table>
-        <table border="1" class="dataframe rest">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Band</th>
-      <th>Call</th>
-      <th>Mode</th>
-      <th>S</th>
-      <th>R</th>
-      <th>Country</th>
-      <th>Date</th>
-      <th>Time</th>
-    </tr>
-  </thead>
-  <tbody>
     <tr>
       <td>20</td>
       <td>N4JOM</td>
@@ -35015,7 +35167,7 @@
     <tr>
       <td>30</td>
       <td>K3JAS</td>
-      <td>FT8</td>
+      <td>FT4</td>
       <td></td>
       <td></td>
       <td>PA</td>
@@ -35025,7 +35177,7 @@
     <tr>
       <td>30</td>
       <td>K3JAS</td>
-      <td>FT4</td>
+      <td>FT8</td>
       <td></td>
       <td></td>
       <td>PA</td>
@@ -36954,21 +37106,21 @@
     </tr>
     <tr>
       <td>40</td>
-      <td>N5FWB</td>
-      <td>FT8</td>
-      <td></td>
-      <td></td>
-      <td>TX</td>
-      <td>2019/08/03</td>
-      <td>01:33:00</td>
-    </tr>
-    <tr>
-      <td>40</td>
       <td>KK4VPT</td>
       <td>FT8</td>
       <td></td>
       <td></td>
       <td>TN</td>
+      <td>2019/08/03</td>
+      <td>01:33:00</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>N5FWB</td>
+      <td>FT8</td>
+      <td></td>
+      <td></td>
+      <td>TX</td>
       <td>2019/08/03</td>
       <td>01:33:00</td>
     </tr>
@@ -37924,6 +38076,7 @@
     </tr>
   </tbody>
 </table>
+        </div>
     </body>
     </html>
     

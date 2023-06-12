@@ -42,12 +42,22 @@ def generate_html(output_file):
     css_path = os.path.join('CSS', css_file)
     css_link = f'    <link rel="stylesheet" type="text/css" href="{css_path}">\n'
 
+    show_rest_button = '''
+    <center><button id="showRestButton" onclick="toggleRestTable()">Show Less</button></center>
+    '''
+
     html_page = f"""
     <!DOCTYPE html>
     <html>
     <head>
         <title>N0YEP's Log</title>
         {css_link}
+        <style>
+            #restTableContainer {{
+                display: block;
+                text-align: center;
+            }}
+        </style>
         <script>
             function searchTable() {{
                 var input, filter, table, tr, td, i, txtValue;
