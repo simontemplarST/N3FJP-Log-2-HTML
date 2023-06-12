@@ -2,32 +2,28 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
 import pandas as pd
-import pyodbc
+import sqlite3
 import os
 import threading
 
-# Connect to the Access database
-conn_str = (
-    r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
-    r'DBQ=Y:\LogData.mdb;'
-)
+# Connect to the SQLite database
+conn = sqlite3.connect('LogData.db')
 
 def generate_html(output_file):
-    cnxn = pyodbc.connect(conn_str)
-    sql = "SELECT fldBand, fldCall, fldMode, fldRstR, fldRstS, fldSPCNum, fldDateStr, fldTimeOnStr FROM tblContacts ORDER BY fldDateStr DESC, fldTimeOnStr DESC"
-    df = pd.read_sql_query(sql, cnxn)
+    df = pd.read_sql_query(sql, conn)
 
     # Rename the columns
-    df = df.rename(columns={
-        'fldBand': 'Band',
-        'fldCall': 'Call',
-        'fldMode': 'Mode',
-        'fldRstR': 'S',
-        'fldRstS': 'R',
-        'fldSPCNum': 'Country',
-        'fldDateStr': 'Date',
-        'fldTimeOnStr': 'Time'
-    })
+   # df = df.rename(columns={
+   #     'fldBand': 'Band',
+   #     'fldCall': 'Call',
+   #     'fldMode': 'Mode',
+   #     'fldRstR': 'S',
+   #     'fldRstS': 'R',
+   #     'fldSPCNum': 'Country',
+   #     'fldDateStr': 'Date',
+   #     'fldTimeOnStr': 'Time'
+   # })
+    #Leaving out for now. Need table names first.
 
     # Split the dataframe into two parts: top 10 rows and the rest
     df_top10 = df.head(10)
@@ -80,28 +76,13 @@ def generate_html(output_file):
                     }}
                 }}
             }}
-
-            function toggleRestTable() {{
-                var restTable = document.getElementsByClassName("rest")[0];
-                var showRestButton = document.getElementById("showRestButton");
-                if (restTable.style.display === "none") {{
-                    restTable.style.display = "table";
-                    showRestButton.textContent = "Show Less";
-                }} else {{
-                    restTable.style.display = "none";
-                    showRestButton.textContent = "Show More";
-                }}
-            }}
         </script>
     </head>
     <body>
         <center> <h1>N0YEP's Log</h1> </center>
         <center><input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for callsigns.."></center>
         {html_table_top10}
-        <div id="restTableContainer">
-            {show_rest_button}
-            {html_table_rest}
-        </div>
+        {html_table_rest}
     </body>
     </html>
     """
